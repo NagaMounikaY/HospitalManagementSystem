@@ -1,0 +1,26 @@
+/* styles.css */
+
+/* Hero Section */
+.hero {
+    background-color: #808080;
+    padding: 60px 0;
+}
+
+.hero h1 {
+    color: orange; /* Color for the main heading */
+}
+
+.hero p {
+    color: orange; /* Color for the paragraph text */
+}
+
+/* Custom Styles */
+.btn-light {
+    color: #343a40;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+body{
+    color: #48D1CC;
+    background-color:#FFFAFA;
+}

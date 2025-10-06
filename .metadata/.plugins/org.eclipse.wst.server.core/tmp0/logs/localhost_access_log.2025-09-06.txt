@@ -1,0 +1,6 @@
+127.0.0.1 - - [06/Sep/2025:19:38:01 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [06/Sep/2025:19:38:04 +0530] "GET /HospitalManagementSystem/ HTTP/1.1" 200 300
+0:0:0:0:0:0:0:1 - - [06/Sep/2025:19:38:19 +0530] "GET /HospitalManagementSystem/HelloServlet?name=mounika HTTP/1.1" 500 3398
+127.0.0.1 - - [06/Sep/2025:19:39:36 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [06/Sep/2025:19:39:36 +0530] "GET /HospitalManagementSystem/ HTTP/1.1" 200 300
+0:0:0:0:0:0:0:1 - - [06/Sep/2025:19:39:45 +0530] "GET /HospitalManagementSystem/HelloServlet?name=mounika HTTP/1.1" 200 27
