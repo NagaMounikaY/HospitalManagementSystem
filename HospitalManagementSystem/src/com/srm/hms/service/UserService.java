@@ -35,6 +35,9 @@ public class UserService {
         return userDao.getAllPatients();
     }
 
+    public Users selectUserById(int user_id) {
+    	return userDao.selectUserById(user_id);
+    }
 
 
 }

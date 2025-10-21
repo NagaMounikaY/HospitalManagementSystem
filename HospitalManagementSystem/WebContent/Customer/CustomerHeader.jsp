@@ -77,11 +77,14 @@ header nav ul li a strong {
             <div class="logo"><i class="fa fa-box"></i> Hospital Core</div>
             <nav>
                 <ul>
-                    <li><a href="<%= request.getContextPath() %>/home/Home.jsp"><i class="fa fa-fw fa-home"></i><strong>Home</strong></a></li>
+                    <li><a href="<%= request.getContextPath() %>/Customer/Customer-list.jsp"><i class="fa fa-fw fa-home"></i><strong>Home</strong></a></li>
                     <li><a href="<%= request.getContextPath() %>/register/register-update.jsp"><i class="fa fa-fw fa-user"></i><strong>Profile</strong></a></li>
-                    <li><a href="<%= request.getContextPath() %>/listBranch"><i class="fa fa-fw fa-globe"></i><strong>View Branches</strong></a></li>
-                    <li><a  href="<%= request.getContextPath() %>/Customer/update-form.jsp"><i class="fa fa-fw fa-truck"></i><strong>Add Courier</strong></a></li>
                     <li><a href="<%= request.getContextPath() %>/appointment/details"><i class="fa fa-fw fa-map-pin"></i><strong>Book Appointment</strong></a></li>
+                    <li>
+    <a href="<%= request.getContextPath() %>/paidAppointments?action=patientAppointments">
+        <i class="fa fa-fw fa-th-large"></i><strong>View Appointments</strong>
+    </a>
+</li>
                     <li><a href="<%= request.getContextPath() %>/logout"><i class="fa fa-fw fa-sign-out"></i><strong>LogOut</strong></a></li>
                 </ul>
             </nav>

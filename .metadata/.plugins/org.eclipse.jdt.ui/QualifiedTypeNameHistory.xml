@@ -22,10 +22,10 @@
 <fullyQualifiedTypeName name="com.srm.hms.model.Appointment"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="com.srm.hms.service.AppointmentService"/>
-<fullyQualifiedTypeName name="com.srm.hms.dao.AppointmentDao"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
-<fullyQualifiedTypeName name="com.srm.hms.service.UserService"/>
 <fullyQualifiedTypeName name="com.srm.hms.model.TimeSlot"/>
 <fullyQualifiedTypeName name="com.srm.hms.model.Users"/>
 <fullyQualifiedTypeName name="java.sql.Time"/>
+<fullyQualifiedTypeName name="com.srm.hms.dao.AppointmentDao"/>
+<fullyQualifiedTypeName name="com.srm.hms.service.UserService"/>
 </qualifiedTypeNameHistroy>

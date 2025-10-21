@@ -41,6 +41,8 @@
         Users userRole = (Users) session.getAttribute("user");
         if ("Admin".equals(userRole.getUser_role())) {
             request.getRequestDispatcher("/Admin/AdminHeader.jsp").include(request, response);
+        } else if("Doctor".equalsIgnoreCase(userRole.getUser_role())) {
+        	request.getRequestDispatcher("/Doctor/DoctorHeader.jsp").include(request, response);
         } else {
             request.getRequestDispatcher("/Customer/CustomerHeader.jsp").include(request, response);
         }

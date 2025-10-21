@@ -1,52 +1,51 @@
 package com.srm.hms.service;
 
-import java.sql.Connection;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.List;
 
 import com.srm.hms.dao.AppointmentDao;
 import com.srm.hms.model.Appointment;
 
 public class AppointmentService {
-    private AppointmentDao dao;
+
+    private AppointmentDao appointmentDao;
 
     public AppointmentService() {
-        this.dao = new AppointmentDao();
+        this.appointmentDao = new AppointmentDao();
     }
 
-    // Step 1: Create draft appointment
-    public boolean createDraft(Appointment appointment) throws SQLException {
-        return dao.createDraft(appointment);
+    // Step 1: Create draft
+    public boolean createDraft(Appointment appointment) {
+        return appointmentDao.createDraft(appointment);
     }
 
-    // Step 2: Update slot & mark as Pending
-    public boolean updateSlot(int appointmentId, int slotId, Date slotDate) throws SQLException {
-        return dao.updateSlot(appointmentId, slotId, slotDate);
+    // Step 2: Update slot and set status Pending
+    public boolean updateSlot(int appointmentId, int slotId, Date slotDate) {
+        return appointmentDao.updateSlot(appointmentId, slotId, slotDate);
     }
 
-    // Admin: Assign doctor
-    public boolean assignDoctor(int appointmentId, int doctorId) throws SQLException {
-        return dao.assignDoctor(appointmentId, doctorId);
+    // Step 3: Assign doctor (Admin)
+    public boolean assignDoctor(int appointmentId, int doctorId) {
+        return appointmentDao.assignDoctor(appointmentId, doctorId);
     }
 
-    // Update status (e.g., Paid, Completed, Cancelled)
-    public boolean updateStatus(int appointmentId, String status) throws SQLException {
-        return dao.updateStatus(appointmentId, status);
+    // Update appointment status
+    public boolean updateStatus(int appointmentId, String status) {
+        return appointmentDao.updateStatus(appointmentId, status);
     }
 
     // Get appointments by patient
-    public List<Appointment> getAppointmentsByPatient(int patientId) throws SQLException {
-        return dao.getAppointmentsByPatient(patientId);
+    public List<Appointment> getAppointmentsByPatient(int patientId) {
+        return appointmentDao.getAppointmentsByPatient(patientId);
     }
 
     // Get appointments by doctor
-    public List<Appointment> getAppointmentsByDoctor(int doctorId) throws SQLException {
-        return dao.getAppointmentsByDoctor(doctorId);
+    public List<Appointment> getAppointmentsByDoctor(int doctorId) {
+        return appointmentDao.getAppointmentsByDoctor(doctorId);
     }
 
-    // Admin: get all paid appointments
-    public List<Appointment> getPaidAppointments() throws SQLException {
-        return dao.getPaidAppointments();
+    // Get paid appointments (Admin)
+    public List<Appointment> getPaidAppointments() {
+        return appointmentDao.getPaidAppointments();
     }
 }

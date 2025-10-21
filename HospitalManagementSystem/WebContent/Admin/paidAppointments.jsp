@@ -5,9 +5,21 @@
 <head>
     <title>Paid Appointments</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style type="text/css">
+        body {
+            color: blue;
+            padding-top: 100px;
+             padding-bottom: 100px;
+        }
+        .custom-thead {
+            background-color: #4169E1;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"></jsp:include>
+ <jsp:include page="../Admin/AdminHeader.jsp" />
+ <div></div><br><br>
 
 <div class="container mt-5">
     <h2 class="text-center mb-4">Paid Appointments</h2>
@@ -19,7 +31,7 @@
 
     <c:if test="${not empty paidList}">
         <table class="table table-bordered table-striped">
-            <thead class="thead-dark">
+            <thead class="custom-thead">
                 <tr>
                     <th>Patient Name</th>
                     <th>Description</th>
@@ -61,6 +73,7 @@
         <p class="text-center mt-3">No paid appointments available.</p>
     </c:if>
 </div>
+<div></div><br><br>
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>

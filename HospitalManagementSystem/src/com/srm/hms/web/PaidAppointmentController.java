@@ -1,12 +1,12 @@
 package com.srm.hms.web;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
+import com.srm.hms.dao.AppointmentDao;
 import com.srm.hms.model.Appointment;
 import com.srm.hms.model.Users;
 import com.srm.hms.service.AppointmentService;
@@ -17,10 +17,12 @@ public class PaidAppointmentController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private AppointmentService appointmentService;
     private UserService userService;
+    private AppointmentDao appointmentDao;
 
     public void init() {
         appointmentService = new AppointmentService();
-        userService =new UserService();
+        userService = new UserService();
+        appointmentDao=new AppointmentDao();
     }
     
     @Override
@@ -42,6 +44,17 @@ public class PaidAppointmentController extends HttpServlet {
                 case "assignDoctor":
                     assignDoctor(request, response);
                     break;
+
+                //Added — show appointments for patient
+                case "patientAppointments":
+                    showPatientAppointments(request, response);
+                    break;
+
+                //Added — show appointments for doctor
+                case "doctorAppointments":
+                    showDoctorAppointments(request, response);
+                    break;
+
                 default:
                     listPaidAppointments(request, response);
                     break;
@@ -86,6 +99,43 @@ public class PaidAppointmentController extends HttpServlet {
             e.printStackTrace();
             request.setAttribute("errorMessage", e.getMessage());
             listPaidAppointments(request, response);
+        }
+    }
+
+    // New method for Patient — view own appointments with doctor details
+    private void showPatientAppointments(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("user") != null) {
+            Users user = (Users) session.getAttribute("user");
+            List<Appointment> appointments = appointmentService.getAppointmentsByPatient(user.getUser_id());
+            
+         // For each appointment, check if a prescription exists
+            for (Appointment appt : appointments) {
+                boolean exists = appointmentDao.hasPrescription(appt.getAppointmentId());
+                appt.setPrescriptionExists(exists);
+            }
+            
+            request.setAttribute("appointments", appointments);
+            RequestDispatcher rd = request.getRequestDispatcher("Customer/patientAppointments.jsp");
+            rd.forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+        }
+    }
+
+    // New method for Doctor — view own appointments with patient details
+    private void showDoctorAppointments(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("user") != null) {
+            Users user = (Users) session.getAttribute("user");
+            List<Appointment> appointments = appointmentService.getAppointmentsByDoctor(user.getUser_id());
+            request.setAttribute("appointments", appointments);
+            RequestDispatcher rd = request.getRequestDispatcher("Doctor/doctorAppointments.jsp");
+            rd.forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
         }
     }
 }

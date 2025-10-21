@@ -16,6 +16,20 @@ public class Appointment {
     
     private String patientName;
     private Time slotTime;  
+    private String doctorName;
+    
+    private boolean prescriptionExists;
+
+    public boolean isPrescriptionExists() {
+        return prescriptionExists;
+    }
+
+    public void setPrescriptionExists(boolean prescriptionExists) {
+        this.prescriptionExists = prescriptionExists;
+    }
+    
+    public String getDoctorName() { return doctorName; }
+    public void setDoctorName(String doctorName) { this.doctorName = doctorName; }
 
     // getters and setters
     public String getPatientName() { return patientName; }

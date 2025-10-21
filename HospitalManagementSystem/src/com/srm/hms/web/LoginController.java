@@ -86,7 +86,7 @@ public class LoginController extends HttpServlet {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("Customer/Customer-list.jsp");
                     dispatcher.forward(request, response);
                 }else if ("Doctor".equalsIgnoreCase(userRole)) {
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("Customer/Customer-list.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("Doctor/Doctor-list.jsp");
                     dispatcher.forward(request, response);
                 }else {
                     request.setAttribute("errorMessage", "Unknown user role.");
